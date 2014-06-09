@@ -26,6 +26,8 @@
      })();
 
     </script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
   </head>
   <body>
 
@@ -33,10 +35,29 @@
       <h1>JSON Graph Format</h1>
       <p>Detailing the specification of the standard JSON Graph Format for Network data interchange.</p>
     </div>
-    <div>
+    <div class='col-md-offset-1'>
+        <h2><a href='https://github.com/jsongraph/json-graph-specification'>JSON Graph Format Specification Github Repository</a></h2>
+        <ul>
+          <li>JSON-Schema specifications for JSON-Graph</li>
+          <li>Client libraries and utility code</li>
+          <li>Example JSON-Graph files</li>
+        </ul>
+    </div>
+    <div class='col-md-offset-1'>
+      <h2>Overview</h2>
+      <p><strong>This JSON Graph format is focused on capturing basic graph structure in a convenient to use format.</strong>  It allows for the use of metadata objects in the graph, nodes and edges which can be used for any other graph data that needs to be managed in your graph data files (e.g. graph layout, styling, algorithm results, etc).  There have been many efforts to create JSON Graph specifications over the last few years.  We published this JSON Graph specification on Github using JSON Schema and are providing basic tooling around it to help make it a standard.  Please feel free to suggest changes and enhancements to either the specification or tooling (especially via a pull request to Github).</p>
+      <p>JSON Graph uses <a href="http://json-schema.org">JSON-Schema</a> for specification and validation of correctly formatted JSON files. A JSON Graph file isn't valid until it passes validation using the JSON Schema specification.  The master specification was left as minimal as possible to be useful in the broadest range of applications.  Sub-specifications may be used that validate against the master specification as well as the sub-specification for application specific needs for a JSON Graph datafile.</p>
+      <p></p>
+    </div>
+    <div class='col-md-offset-1'>
+      <h2>Similar Projects</h2>
       <ul>
-        <li><a href='https://github.com/jsongraph/json-graph-specification'>JSON Graph Format Specification Github Page</a></li>
+        <li><a href="https://code.google.com/p/jsdot/wiki/JSONGraph">JSDot</a> - Client side application to draw graphs (last posting - 2009)</li>
+        <li><a href="https://github.com/bruth/json-graph-spec">JSON-Graph-Spec</a>JSON specification for representing a graph structure for import/export to NeoJ and other purposes (2014)</li>
+        <li><a href="http://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/JSON+Graph+Format">JSON Graph Format for KIELER Layout</a> is optimized for sophisticated layout algorithms (2014)</li>
+        <li><a href="http://cytoscape.github.io/cytoscape.js/">Cytoscape.js JSON Graph format</a> is tightly coupled with network visualization (2014)</li>
       </ul>
+      <p>We are sure we have missed some specifications - please submit an issue to let us know where they are - thanks!</p>
     </div>
 
 
