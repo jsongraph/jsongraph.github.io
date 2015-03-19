@@ -39,14 +39,22 @@
         <h2><a href='https://github.com/jsongraph'>JSON Graph Format Github</a></h2>
         <ul>
           <li><a href='https://github.com/jsongraph/json-graph-specification'>JSON-Schema specifications for JGF</a></li>
+              <ul>
           <li><a href="https://github.com/jsongraph">Client libraries and utility code</a></li>
-          <li>Example JSON-Graph files</li>
-          <li><a href="http://apps.cytoscape.org/apps/jgfapp">Cytoscape 3.0+ Plugin</a> <a href="https://github.com/jsongraph/jgf-app">(Code)</a></li>
+              </ul>
+          </li>
+          <li>Child schemas (e.g. derived from JSON Graph Format)
+              <ul>
+                <li>BEL JSON Graph Format available at: <a href="http://json-graph-format.info/child-schemas/bel-json-graph.schema.json">http://json-graph-format.info/child-schemas/bel-json-graph.schema.json</a></li>
+              </ul>
+          </li>
+          <li>Client libraries and utility code</li>
+          <li>Example JSON Graph Format files</li>
         </ul>
     </div>
     <div class='col-md-offset-1'>
       <h2>Overview</h2>
-      <p><strong>This JSON Graph format is focused on capturing basic graph structure in a convenient to use format.</strong>  It allows for the use of metadata objects in the graph, nodes and edges which can be used for any other graph data that needs to be managed in your graph data files (e.g. graph layout, styling, algorithm results, etc).  There have been many efforts to create JSON Graph specifications over the last few years.  We published this JSON Graph specification on Github using JSON Schema and are providing basic tooling around it to help make it a standard.  Please feel free to suggest changes and enhancements to either the specification or tooling (especially via a pull request to Github).</p>
+      <p><strong>This JSON Graph Format is focused on capturing basic graph structure in a convenient to use format.</strong>  It allows for the use of metadata objects in the graph, nodes and edges which can be used for any other graph data that needs to be managed in your graph data files (e.g. graph layout, styling, algorithm results, etc).  There have been many efforts to create JSON Graph specifications over the last few years.  We published this JSON Graph specification on Github using JSON Schema and are providing basic tooling around it to help make it a standard.  Please feel free to suggest changes and enhancements to either the specification or tooling (especially via a pull request to Github).</p>
       <p>JSON Graph uses <a href="http://json-schema.org">JSON-Schema</a> for specification and validation of correctly formatted JSON files. A JSON Graph file isn't valid until it passes validation using the JSON Schema specification.  The master specification was left as minimal as possible to be useful in the broadest range of applications.  Sub-specifications may be used that validate against the master specification as well as the sub-specification for application specific needs for a JSON Graph datafile.</p>
       <p></p>
     </div>
