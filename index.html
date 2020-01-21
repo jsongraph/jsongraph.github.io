@@ -1,110 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>JSON Graph Format Specification Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./bootstrap.css" media="screen">
-    <link rel="stylesheet" href="../assets/css/bootswatch.min.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+
+<head>
+  <meta charset="utf-8">
+  <title>JSON Graph Format Specification Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./bootstrap.css" media="screen">
+  <link rel="stylesheet" href="../assets/css/bootswatch.min.css">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
       <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
       <script src="../bower_components/respond/dest/respond.min.js"></script>
     <![endif]-->
-    <script>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23019901-1']);
+    _gaq.push(['_setDomainName', "bootswatch.com"]);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
 
-     var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-23019901-1']);
-      _gaq.push(['_setDomainName', "bootswatch.com"]);
-        _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+        '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
-     (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-    </script>
+  <!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
 
-    <!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
+</head>
 
-  </head>
-  <body>
+<body>
 
-    <div class="jumbotron">
-      <h1>JSON Graph Format (JGF)</h1>
-      <p>Detailing the specification of the standard JSON Graph Format for Network data interchange.</p>
-    </div>
-    <div class='col-md-offset-1'>
-        <h2><a href='https://github.com/jsongraph'>JSON Graph Format Github</a></h2>
+  <div class="jumbotron">
+    <h1>JSON Graph Format (JGF)</h1>
+    <p>Detailing the specification of the standard JSON Graph Format for Network data interchange.</p>
+  </div>
+  <div class='col-md-offset-1'>
+    <h2><a href='https://github.com/jsongraph'>JSON Graph Format Github</a></h2>
+    <ul>
+      <li><a href="https://jsongraphformat.info/v2.0/json-graph-schema.json">JSON Graph Format V2</a></li>
+      <li><a href="https://jsongraphformat.info/v1.0/json-graph-schema.json">JSON Graph Format V1</a></li>
+      <li><a href='https://github.com/jsongraph/json-graph-specification'>JSON-Schema Github Repo for JGF</a></li>
+      </li>
+      <li>Child schemas (e.g. derived from JSON Graph Format)
         <ul>
-          <li><a href='https://github.com/jsongraph/json-graph-specification'>JSON-Schema specifications for JGF</a></li>
-          </li>
-          <li>Child schemas (e.g. derived from JSON Graph Format)
-              <ul>
-		            <li><a href="http://openbel.org">BEL</a> JSON Graph Format.
-                  <ul>
-                    <li><a href="http://json-graph-format.info/child-schemas/bel-json-graph-3.0.schema.json">Version 3.0</a></li>
-                    <li><a href="http://json-graph-format.info/child-schemas/bel-json-graph-2.0.schema.json">Version 2.0</a></li>
-                    <li><a href="http://json-graph-format.info/child-schemas/bel-json-graph-1.0.schema.json">Version 1.0</a></li>
+          <li><a href="http://openbel.org">BEL</a> JSON Graph Format.
+            <ul>
+              <li><a href="http://json-graph-format.info/child-schemas/bel-json-graph-3.0.schema.json">Version 3.0
+                  (based on JGF V1)</a>
+              </li>
+              <li><a href="http://json-graph-format.info/child-schemas/bel-json-graph-2.0.schema.json">Version 2.0
+                  (based on JGF V1)</a>
+              </li>
+              <li><a href="http://json-graph-format.info/child-schemas/bel-json-graph-1.0.schema.json">Version 1.0
+                  (based on JGF V1)</a>
+              </li>
 
-  		            </ul>
-                </li>
-              </ul>
+            </ul>
           </li>
-          <li><a href="https://github.com/jsongraph">Client libraries and utility code</a></li>
-          <li><a href="https://github.com/jsongraph/json-graph-specification/tree/master/examples">Example JSON Graph Format files</a></li>
-          <li><a href="http://apps.cytoscape.org/apps/jgfapp">Cytoscape 3.0+ JGF Plugin</a> <a href="https://github.com/jsongraph/jgf-app">(Code)</a></li>
         </ul>
-    </div>
-    <div class='col-md-offset-1'>
-      <h2>Overview</h2>
-      <p><strong>This JSON Graph Format is focused on capturing basic graph structure in a convenient to use format.</strong>  It allows for the use of metadata objects in the graph, nodes and edges which can be used for any other graph data that needs to be managed in your graph data files (e.g. graph layout, styling, algorithm results, etc).  There have been many efforts to create JSON Graph specifications over the last few years.  We published this JSON Graph specification on Github using JSON Schema and are providing basic tooling around it to help make it a standard.  Please feel free to suggest changes and enhancements to either the specification or tooling (especially via a pull request to Github).</p>
-      <p>JSON Graph uses <a href="http://json-schema.org">JSON-Schema</a> for specification and validation of correctly formatted JSON files. A JSON Graph file isn't valid until it passes validation using the JSON Schema specification.  The master specification was left as minimal as possible to be useful in the broadest range of applications.  Sub-specifications may be used that validate against the master specification as well as the sub-specification for application specific needs for a JSON Graph datafile.</p>
-      <p></p>
-    </div>
-    <div class='col-md-offset-1'>
-      <h2>Similar Projects</h2>
-      <ul>
-        <li><a href="https://code.google.com/p/jsdot/wiki/JSONGraph">JSDot</a> - Client side application to draw graphs (last posting - 2009)</li>
-        <li><a href="https://github.com/bruth/json-graph-spec">JSON-Graph-Spec</a>JSON specification for representing a graph structure for import/export to NeoJ and other purposes (2014)</li>
-        <li><a href="http://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/JSON+Graph+Format">JSON Graph Format for KIELER Layout</a> is optimized for sophisticated layout algorithms (2014)</li>
-        <li><a href="http://cytoscape.github.io/cytoscape.js/">Cytoscape.js JSON Graph format</a> is tightly coupled with network visualization (2014)</li>
-      </ul>
-      <p>We are sure we have missed some specifications - please submit an issue to let us know where they are - thanks!</p>
-    </div>
+      </li>
+      <li><a href="https://github.com/jsongraph">Client libraries and utility code</a></li>
+      <li><a href="https://github.com/jsongraph/json-graph-specification/tree/master/examples">Example JSON Graph Format
+          files</a></li>
+      <li><a href="http://apps.cytoscape.org/apps/jgfapp">Cytoscape 3.0+ JGF Plugin</a> <a
+          href="https://github.com/jsongraph/jgf-app">(Code)</a></li>
+    </ul>
+  </div>
+  <div class='col-md-offset-1'>
+    <h2>Overview</h2>
+    <p><strong>This JSON Graph Format is focused on capturing basic graph structure in a convenient to use
+        format.</strong> It allows for the use of metadata objects in the graph, nodes and edges which can be used for
+      any other graph data that needs to be managed in your graph data files (e.g. graph layout, styling, algorithm
+      results, etc). There have been many efforts to create JSON Graph specifications over the last few years. We
+      published this JSON Graph specification on Github using JSON Schema and are providing basic tooling around it to
+      help make it a standard. Please feel free to suggest changes and enhancements to either the specification or
+      tooling (especially via a pull request to Github).</p>
+    <p>JSON Graph uses <a href="http://json-schema.org">JSON-Schema</a> for specification and validation of correctly
+      formatted JSON files. A JSON Graph file isn't valid until it passes validation using the JSON Schema
+      specification. The master specification was left as minimal as possible to be useful in the broadest range of
+      applications. Sub-specifications may be used that validate against the master specification as well as the
+      sub-specification for application specific needs for a JSON Graph datafile.</p>
+    <p></p>
+  </div>
+  <div class='col-md-offset-1'>
+    <h2>Similar Projects</h2>
+    <ul>
+      <li><a href="https://code.google.com/p/jsdot/wiki/JSONGraph">JSDot</a> - Client side application to draw graphs
+        (last posting - 2009)</li>
+      <li><a href="https://github.com/bruth/json-graph-spec">JSON-Graph-Spec</a>JSON specification for representing a
+        graph structure for import/export to NeoJ and other purposes (2014)</li>
+      <li><a href="http://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/JSON+Graph+Format">JSON Graph Format
+          for KIELER Layout</a> is optimized for sophisticated layout algorithms (2014)</li>
+      <li><a href="http://cytoscape.github.io/cytoscape.js/">Cytoscape.js JSON Graph format</a> is tightly coupled with
+        network visualization (2014)</li>
+    </ul>
+    <p>We are sure we have missed some specifications - please submit an issue to let us know where they are - thanks!
+    </p>
+  </div>
 
-    <div class="col-md-offset-1">
-      <h2>Current Sponsors</h2>
-      <ul>
-        <li><a href="http://adsworks.com">ADS, LLC</a></li>
-      </ul>
-    </div>
+  https://json-ld.org/
+  https://w3c.github.io/did-core/
+  https://www.w3.org/TR/vc-data-model/
+  https://www.gqlstandards.org/existing-languages
 
-    <div class="col-md-offset-1">
-      <h2>Contributors</h2>
-      <ul>
-        <li>Anthony Bargnesi</li>
-        <li>Anselmo DiFabio</li>
-        <li>William Hayes</li>
-        <li>Georgiy Shibaev (@RangerMauve on Github)</li>
-        <li>Cristophe Benz</li>
-        <li>Hugh Pyle</li>
-      </ul>
-    </div>
+  <div class='col-md-offset-1'>
+    <h2>Background Links</h2>
+    <ul>
+      <li><a href="https://json-ld.org/">JSON Linked Data</a></li>
+      <li><a href="https://w3c.github.io/did-core/">Decentralized Identifiers</a></li>
+      <li><a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials Data Model</li>
+      <li><a href="https://www.gqlstandards.org/existing-languages">https://www.gqlstandards.org/existing-languages</li>
+    </ul>
+  </div>
+
+  <div class="col-md-offset-1">
+    <h2>Current Sponsors</h2>
+    <ul>
+      <li><a href="http://adsworks.com">ADS, LLC</a></li>
+      <li><a href="https://biodati.com">BioDati, Inc</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-offset-1">
+    <h2>Contributors</h2>
+    <ul>
+      <li>Anthony Bargnesi</li>
+      <li>Anselmo DiFabio</li>
+      <li>William Hayes</li>
+      <li>Georgiy Shibaev (@RangerMauve on Github)</li>
+      <li>Cristophe Benz</li>
+      <li>Hugh Pyle</li>
+      <li>@erik470 (on Github)</li>
+      <li>Travis Giggy</li>
+    </ul>
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/bootswatch.js"></script>
-    <script>
-  	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootswatch.js"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  		ga('create', 'UA-72855521-1', 'auto');
-  		ga('send', 'pageview');
-    </script>
-  </body>
+    ga('create', 'UA-72855521-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+
 </html>
